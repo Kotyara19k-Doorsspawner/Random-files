@@ -1,0 +1,66 @@
+loadstring(game:HttpGet('https://pastefy.app/XItf45dl/raw'))()
+
+ -- Ripper
+coroutine.wrap(function()
+    while true do
+        wait(math.random(10,150))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet("https://pastefy.app/elv0wAG8/raw"))()
+    end
+end)()
+
+ -- Rebound
+coroutine.wrap(function()
+    while true do
+        wait(math.random(30,230))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet("https://pastefy.app/UtJEjaYS/raw"))()
+    end
+end)()
+
+ -- Cease
+coroutine.wrap(function()
+    while true do
+        wait(math.random(10,180))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet("https://pastefy.app/ofutwkjb/raw"))()
+    end
+end)()
+
+ -- Deer God
+coroutine.wrap(function()
+    while true do
+        wait(math.random(50,220))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet("https://pastefy.app/mEikC32S/raw"))()
+    end
+end)()
+
+ -- Slience
+coroutine.wrap(function()
+    while true do
+        wait(math.random(90,625))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet(""))()
+    end
+end)()
+
+
+for ii,vv in pairs(game:GetService("Players"):GetChildren()) do
+    PlayersIngame = ii
+end -- Gets All Players
+if TestMultplayer == true then
+    PlayersIngame = 1000 -- TestMultplayer
+end
+
+--[[
+--Main Coder
+--Ogg Hardcore by Noonie And Ping
+--This Hardcore by Kotyara#19
+--Extra help by C87FM for model entities and Depth#6197 for Rebound Hardcore and Deer god
+]]--
