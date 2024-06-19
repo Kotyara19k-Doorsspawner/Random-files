@@ -13,7 +13,7 @@ end)()
  -- Rebound
 coroutine.wrap(function()
     while true do
-        wait(math.random(30,230))
+        wait(math.random(110,500))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/UtJEjaYS/raw"))()
@@ -33,7 +33,7 @@ end)()
  -- Deer God
 coroutine.wrap(function()
     while true do
-        wait(math.random(50,220))
+        wait(math.random(140,320))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/mEikC32S/raw"))()
@@ -43,20 +43,24 @@ end)()
  -- Slience
 coroutine.wrap(function()
     while true do
-        wait(math.random(90,625))
+        wait(math.random(150,650))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
-loadstring(game:HttpGet(""))()
+loadstring(game:HttpGet("https://pastefy.app/h3fIxvoQ/raw"))()
     end
 end)()
 
+ -- A-60
+coroutine.wrap(function()
+    while true do
+        wait(math.random(200,625))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet("https://pastefy.app/eT6qB73X/raw"))()
+    end
+end)()
 
-for ii,vv in pairs(game:GetService("Players"):GetChildren()) do
-    PlayersIngame = ii
-end -- Gets All Players
-if TestMultplayer == true then
-    PlayersIngame = 1000 -- TestMultplayer
-end
+loadstring(game:HttpGet("https://pastefy.app/ILbuaTma/raw"))()
 
 --[[
 --Main Coder
