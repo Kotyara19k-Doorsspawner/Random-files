@@ -36,7 +36,7 @@ coroutine.wrap(function()
         wait(math.random(40,320))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
-loadstring(game:HttpGet("https://pastefy.app/GZ5IzL5L/raw"))()
+loadstring(game:HttpGet("https://pastefy.app/mEikC32S/raw"))()
     end
 end)()
 
