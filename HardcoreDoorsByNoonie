@@ -3,7 +3,7 @@ loadstring(game:HttpGet('https://pastefy.app/XItf45dl/raw'))()
  -- Ripper
 coroutine.wrap(function()
     while true do
-        wait(math.random(410,540))
+        wait(math.random(50,190))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/elv0wAG8/raw"))()
@@ -13,7 +13,7 @@ end)()
  -- Rebound
 coroutine.wrap(function()
     while true do
-        wait(math.random(1510,8980))
+        wait(math.random(210,780))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/UtJEjaYS/raw"))()
@@ -23,7 +23,7 @@ end)()
  -- Cease
 coroutine.wrap(function()
     while true do
-        wait(math.random(180,230))
+        wait(math.random(180,190))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/ofutwkjb/raw"))()
@@ -33,7 +33,7 @@ end)()
  -- Deer God
 coroutine.wrap(function()
     while true do
-        wait(math.random(3640,2320))
+        wait(math.random(40,320))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/GZ5IzL5L/raw"))()
@@ -43,7 +43,7 @@ end)()
  -- Slience
 coroutine.wrap(function()
     while true do
-        wait(math.random(1730,7290))
+        wait(math.random(450,890))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/h3fIxvoQ/raw"))()
@@ -53,7 +53,7 @@ end)()
  -- A-60
 coroutine.wrap(function()
     while true do
-        wait(math.random(5710,6235))
+        wait(math.random(810,1035))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet("https://pastefy.app/eT6qB73X/raw"))()
