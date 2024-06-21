@@ -1,0 +1,94 @@
+--// Crucifix (Execute in prerun shop)
+function FullVersion() do
+local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+local CustomShop = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Shop%20Items/Source.lua"))()
+
+
+-- Create your tool here
+local exampleTool = game:GetObjects("rbxassetid://13099716081")[1]
+
+-- Create custom shop item
+CustomShop.CreateItem(exampleTool, {
+    Title = "Gummy Purple FlashLight",
+    Desc = "Infinite Batteries, better light",
+    Image = "rbxassetid://18147752789",
+    Price = 60,
+    Stack = 1,
+})
+local Players = game:GetService("Players")
+local Plr = Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local Hum = Char:WaitForChild("Humanoid")
+local RightArm = Char:WaitForChild("RightUpperArm")
+local LeftArm = Char:WaitForChild("LeftUpperArm")
+local RightC1 = RightArm.RightShoulder.C1
+local LeftC1 = LeftArm.LeftShoulder.C2
+        local function setupCrucifix(tool)
+        RightArm.Name = "R_Arm"
+        LeftArm.Name = "L_Arm"
+        
+        RightArm.RightShoulder.C1 = RightC1 * CFrame.Angles(math.rad(-90), math.rad(-0), 0)
+        LeftArm.LeftShoulder.C1 = LeftC1 * CFrame.new(0, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+        for _, v in next, Hum:GetPlayingAnimationTracks() do
+            v:Stop()
+        end
+        end
+shadow.Equipped:Connect(function()
+setupCrucifix(shadow)
+game.Players.LocalPlayer:SetAttribute("Hidden", true)
+end)
+ 
+shadow.Unequipped:Connect(function()
+    game.Players.LocalPlayer:SetAttribute("Hidden", false)
+        RightArm.Name = "RightUpperArm"
+        LeftArm.Name = "LeftUpperArm"
+        
+        RightArm.RightShoulder.C1 = RightC1
+        LeftArm.LeftShoulder.C1 = LeftC1
+end)
+
+local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+local Achievements = debug.getupvalue(Unlock, 1)
+
+local custom = {
+    Title = "Unlock The Crucifix", 
+    Desc = "WoW How",  --first line
+    Reason = "Start Praying Jesus", --change this for second line of the badgs desc
+    BadgeId = 2127965910, --change badge id for image
+    Category = 0,
+}
+
+local old = {}
+for i, v in next, Achievements.Join do
+    old[i] = v
+end
+
+for i, v in next, custom do
+    Achievements.Join[i] = v
+end
+
+Unlock(nil, "Join")
+
+for i, v in next, old do
+    Achievements.Join[i] = v
+end
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FullVersion()
