@@ -8,7 +8,7 @@ require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("
 -- Twister
 coroutine.wrap(function()
     while true do
-        wait(math.random(20,50))
+        wait(math.random(30,80))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/Fv3m31f9/raw'))()
@@ -28,7 +28,7 @@ end)()
 -- Obsession 
 coroutine.wrap(function()
     while true do
-        wait(math.random(10,20))
+        wait(math.random(20,30))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/7JHxb6Oz/raw'))()
