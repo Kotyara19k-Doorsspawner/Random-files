@@ -18,7 +18,7 @@ end)()
 -- BlackOut
 coroutine.wrap(function()
     while true do
-        wait(math.random(60,80))
+        wait(math.random(80,120))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Jahani-john/mayhem-mode/main/mayhemmode-main/ObfuscatedEntities/Blackout-obfuscated.lua'))()
