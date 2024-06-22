@@ -1,0 +1,91 @@
+loadstring(game:HttpGet('https://pastefy.app/m9wbVBym/raw'))()
+
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "The Pain Just Begain",
+    Desc = "Join a Match of HardCore For the First Time.",
+    Reason = "You executed the HardCore script.",
+    Image = "rbxassetid://17735553738"
+})
+
+-- Depth
+coroutine.wrap(function()
+    while true do
+        wait(math.random(70,120))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet('https://pastefy.app/JztYAL4m/raw'))()
+    end
+end)()
+
+-- Smiler 
+coroutine.wrap(function()
+    while true do
+        wait(math.random(130,320))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet('https://pastefy.app/YMa2CPBC/raw'))()
+    end
+end)()
+
+-- Nightmare Rush
+coroutine.wrap(function()
+    while true do
+        wait(math.random(50,180))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet(''))()
+    end
+end)()
+
+-- Nightmare Ambush
+coroutine.wrap(function()
+    while true do
+        wait(math.random(90,500))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet(''))()
+    end
+end)()
+
+-- Trauma
+coroutine.wrap(function()
+    while true do
+        wait(math.random(50,420))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet(''))()
+    end
+end)()
+
+-- Vhs!Sans
+coroutine.wrap(function()
+    while true do
+        wait(200)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet(''))()
+    end
+end)()
+
+-- 200
+coroutine.wrap(function()
+    while true do
+        wait(math.random(40,520))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet('https://pastefy.app/1xxpTxo3'))()
+    end
+end)()
+
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+        Text = "Doors Hard Mode ON! By MuhammadGames (MuhammadGames#0017) and Volta (volta#2161)",
+        Color = Color3.fromRGB(255, 0, 0),
+        Font = Enum.Font.SourceSansBold,
+        TextSize = 18,
+    })
+
+    Gui("HardMode","+1000","Hard Mode (Doesn't add Nobs)")
