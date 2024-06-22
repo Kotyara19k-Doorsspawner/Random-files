@@ -2,11 +2,13 @@ require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 wait(1)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Mayhem mode now is active",true)
+wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Extra Thanks for Gameplays chikitos for found the bugs",true)
 
 -- Twister
 coroutine.wrap(function()
     while true do
-        wait(math.random(20,30))
+        wait(math.random(50,40))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/Fv3m31f9/raw'))()
@@ -26,7 +28,7 @@ end)()
 -- Obsession 
 coroutine.wrap(function()
     while true do
-        wait(math.random(10,20))
+        wait(math.random(10,30))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/7JHxb6Oz/raw'))()
@@ -36,7 +38,7 @@ end)()
 -- Threat
 coroutine.wrap(function()
     while true do
-        wait(math.random(90,520))
+        wait(math.random(80,520))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/XE6WcVRT/raw'))()
@@ -46,9 +48,19 @@ end)()
 -- Maniack Rush
 coroutine.wrap(function()
     while true do
-        wait(math.random(90,430))
+        wait(math.random(20,340))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
-loadstring(game:HttpGet(''))()
+loadstring(game:HttpGet('https://pastefy.app/fImnoc9F'))()
+    end
+end)()
+
+-- Maniack Ambush(Golden Ambush)
+coroutine.wrap(function()
+    while true do
+        wait(math.random(100,530))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(2)
+loadstring(game:HttpGet('https://pastefy.app/3802ydsf/raw'))()
     end
 end)()
