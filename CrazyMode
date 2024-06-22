@@ -80,12 +80,3 @@ coroutine.wrap(function()
 loadstring(game:HttpGet('https://pastefy.app/1xxpTxo3/raw'))()
     end
 end)()
-
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-        Text = "Doors Hard Mode ON! By MuhammadGames (MuhammadGames#0017) and Volta (volta#2161)",
-        Color = Color3.fromRGB(255, 0, 0),
-        Font = Enum.Font.SourceSansBold,
-        TextSize = 18,
-    })
-
-    Gui("HardMode","+1000","Hard Mode (Doesn't add Nobs)")
