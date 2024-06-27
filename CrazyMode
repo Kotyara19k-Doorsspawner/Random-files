@@ -16,7 +16,7 @@ achievementGiver({
 -- Depth
 coroutine.wrap(function()
     while true do
-        wait(30)
+        wait(80)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(2)
 loadstring(game:HttpGet('https://pastefy.app/JztYAL4m/raw'))()
