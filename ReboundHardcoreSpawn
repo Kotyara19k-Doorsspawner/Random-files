@@ -50,653 +50,185 @@ function GetGitSound(GithubSnd,SoundName)
  sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
  return sound
 end
- 
+
 local scare = Instance.new("Sound")
 scare.Parent = game.Workspace
 scare.Name = "MyEarsBurn"
 scare.SoundId = "rbxassetid://5567523008"
 scare.PlaybackSpeed = 3
 scare.Volume = 1
- 
-local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
-shift.Parent = scare
- 
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = scare
-distort.Level = 1
- 
-local TweenService = game:GetService("TweenService")
-local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
 
----====== Load spawner ======---
+local Spawner = loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/OtherSuff/DoorEntitySpawn%2BSource'))()
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
----====== Create entity ======---
-
-local entity = spawner.Create({
- Entity = {
-  Name = "Rebound",
-  Asset = "rbxassetid://12254145022",
-  HeightOffset = 0
- },
- Lights = {
-  Flicker = {
-   Enabled = false,
-   Duration = 1
-  },
-  Shatter = false,
-  Repair = false
- },
- CameraShake = {
-  Enabled = false,
-  Range = 100,
-  Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
- },
- Movement = {
-  Speed = 100,
-  Delay = 2,
-  Reversed = true
- },
- Rebounding = {
-  Enabled = false,
-  Type = "Ambush", -- "Blitz"
-  Min = 1,
-  Max = 1,
-  Delay = 2
- },
- Damage = {
-  Enabled = true,
-  Range = 40,
-  Amount = 125
- },
- Crucifixion = {
-  Enabled = true,
-  Range = 40,
-  Resist = true,
-  Break = true
- },
- Death = {
-  Type = "Guiding", -- "Curious"
-  Hints = {"You died to Rebound...", "It appears at the next door and has a chance to stay there or run back to the latest door.", "He will come back many times after his initial spawn", "so hide every next door until it is safe.."},
-  Cause = ""
- }
+-- Create entity
+local entity = Spawner.createEntity({
+    CustomName = "Rebound", -- Custom name of your entity
+    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
+    Speed = 100, -- Percentage, 100 = default Rush speed
+    DelayTime = 2.5, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    NoDieOnCrouching = false,
+    NoHiding = false,
+    AntiCrucifix = false,
+    KillRange = 10000,
+    OneRoom = false,
+    DieOnLook = false,
+    BreakLights = false,
+    BackwardsMovement = true,
+     MovementDeath = {
+        false, -- Turned On?
+        '1',  --- '1'= 'Instant Without Being Looked out' | '2' = 'With Being Looked At'
+    },
+    FlickerLights = {
+        false, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Type = "3", -- "Normal" or 1 | "Pop" or 2 | "endlessdoorsrebound" or "Rebound" or 3 | More coming Soon
+            Image1 = "rbxassetid://18331472022", -- Image1 url
+            Image2 = "rbxassetid://18331472022", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                "0", -- SoundId Link or Roblox ID
+                { Volume = 5 }, -- Sound properties
+            },
+            Sound2 = {
+                "5567523008", -- SoundId Link or Roblox ID
+                { Volume = 1 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(0, 74, 130), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    Color = 'GuidingLight', -- CuriousLight ( Yellow ) | GuidingLight ( Blue )
+    DiffrentMessages = false,
+    CustomDialog = {  
+        {"Claim has seen you.", "It will consume anyone on sight.", "It takes a bit to fully spawn in", "so you can use that to your advantage."}, -- Death Messages
+        {"Stop Dieing"},
+        {"Bruh", "Use what you have learned from Rush!"},
+        {"It seems like Template is causing quite the ruckus...", "Hide in a closet or bed as quickly as possible!"},
+         {"I have told You What to do", "YOU JUST HAVE A SKILL ISSUE"}
+    }
 })
 
----====== Debug entity ======---
+-----[[ Advanced Sctipting ]]-----
 
-entity:SetCallback("OnSpawned", function()
-    print("Entity has spawned")
-workspace.Rebound.Rebound_Cue:Destroy()
-workspace.Rebound.Rebound_Cue2:Destroy()
-workspace.Rebound.Torso.Idle:Destroy()
-workspace.Rebound.Torso.Footsteps:Destroy()
-local bruh = workspace.Rebound.Torso
-local TweenService = game:GetService("TweenService")
-local spawn = Instance.new("Sound")
-spawn.Parent = bruh
-spawn.Name = "ReboundSpawn"
-spawn.SoundId = "rbxassetid://9114221327"
-spawn.Volume = 5
-spawn.RollOffMaxDistance = 10000
-spawn.RollOffMinDistance = 450
-spawn:Play()
-    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
-    move.Parent = bruh
-    move.Name = "ReboundMoving"
-    move.Volume = 0
-    move.Looped = true
-local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+entity.Debug.OnEntityMoving = function(Invincible,Hiding,plrCollisionPoint)
+print("Invincible: "..tostring(Invincible))
+print("Player to Entity Collision (None hiding Point): "..tostring(plrCollisionPoint))
+print("Hiding: "..tostring(Hiding))
+end
+       
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:")
+    local TweenService = game:GetService("TweenService")
+    local cue2 = Instance.new("Sound")
+    cue2.Parent = workspace.Claim.RushNew
+    cue2.Name = "Idle"
+    cue2.SoundId = "rbxassetid://8256091246"
+    cue2.Volume = 0
+    cue2.Pitch = 4
+    local shift = Instance.new("PitchShiftSoundEffect")
+    shift.Octave = 0.5
+    shift.Parent = cue2
     local distort = Instance.new("DistortionSoundEffect")
-    distort.Level = 0.75
-    distort.Parent = move
- move.RollOffMaxDistance = 200
- move.RollOffMinDistance = 100
-    local tree = Instance.new("TremoloSoundEffect")
-    tree.Depth = 1
-    tree.Duty = 1
-    tree.Frequency = 5
-    tree.Parent = move
-    local eq = Instance.new("EqualizerSoundEffect")
-    eq.HighGain = -60
-    eq.MidGain = 10
-    eq.LowGain = 10
-    eq.Parent = move
- wait(1)
-    vroom:Play()
- move:Play()
-end)
-
-entity:SetCallback("OnStartMoving", function()
-    print("Entity has started moving")
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(1)
-
-function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
-	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
-	end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
-end
-
-local scare = Instance.new("Sound")
-scare.Parent = game.Workspace
-scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://5567523008"
-scare.PlaybackSpeed = 3
-scare.Volume = 1
-
-local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
-shift.Parent = scare
-
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = scare
-distort.Level = 1
-
-local TweenService = game:GetService("TweenService")
-local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
-
----====== Load spawner ======---
-
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-
----====== Create entity ======---
-
-local entity = spawner.Create({
- Entity = {
-  Name = "Rebound",
-  Asset = "rbxassetid://12254145022",
-  HeightOffset = 0
- },
- Lights = {
-  Flicker = {
-   Enabled = false,
-   Duration = 1
-  },
-  Shatter = false,
-  Repair = false
- },
- CameraShake = {
-  Enabled = false,
-  Range = 100,
-  Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
- },
- Movement = {
-  Speed = 100,
-  Delay = 2,
-  Reversed = true
- },
- Rebounding = {
-  Enabled = false,
-  Type = "Ambush", -- "Blitz"
-  Min = 1,
-  Max = 1,
-  Delay = 2
- },
- Damage = {
-  Enabled = true,
-  Range = 40,
-  Amount = 125
- },
- Crucifixion = {
-  Enabled = true,
-  Range = 40,
-  Resist = true,
-  Break = true
- },
- Death = {
-  Type = "Guiding", -- "Curious"
-  Hints = {"You died to Rebound...", "It appears at the next door and has a chance to stay there or run back to the latest door.", "He will come back many times after his initial spawn", "so hide every next door until it is safe.."},
-  Cause = ""
- }
-})
-
----====== Debug entity ======---
-
-entity:SetCallback("OnSpawned", function()
-    print("Entity has spawned")
-workspace.Rebound.Rebound_Cue:Destroy()
-workspace.Rebound.Rebound_Cue2:Destroy()
-workspace.Rebound.Torso.Idle:Destroy()
-workspace.Rebound.Torso.Footsteps:Destroy()
-local bruh = workspace.Rebound.Torso
-local TweenService = game:GetService("TweenService")
-local spawn = Instance.new("Sound")
-spawn.Parent = bruh
-spawn.Name = "ReboundSpawn"
-spawn.SoundId = "rbxassetid://9114221327"
-spawn.Volume = 5
-spawn.RollOffMaxDistance = 10000
-spawn.RollOffMinDistance = 450
-spawn:Play()
-    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
-    move.Parent = bruh
-    move.Name = "ReboundMoving"
-    move.Volume = 0
-    move.Looped = true
-local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
-    local distort = Instance.new("DistortionSoundEffect")
-    distort.Level = 0.75
-    distort.Parent = move
- move.RollOffMaxDistance = 200
- move.RollOffMinDistance = 100
-    local tree = Instance.new("TremoloSoundEffect")
-    tree.Depth = 1
-    tree.Duty = 1
-    tree.Frequency = 5
-    tree.Parent = move
-    local eq = Instance.new("EqualizerSoundEffect")
-    eq.HighGain = -60
-    eq.MidGain = 10
-    eq.LowGain = 10
-    eq.Parent = move
- wait(1)
-    vroom:Play()
- move:Play()
-end)
-
-entity:SetCallback("OnStartMoving", function()
-    print("Entity has started moving")
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(1)
-
-function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
-	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
-	end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
-end
-
-local scare = Instance.new("Sound")
-scare.Parent = game.Workspace
-scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://5567523008"
-scare.PlaybackSpeed = 3
-scare.Volume = 1
-
-local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
-shift.Parent = scare
-
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = scare
-distort.Level = 1
-
-local TweenService = game:GetService("TweenService")
-local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
-
-
-end)
-
-entity:SetCallback("OnReachNode", function(node)
- print("Entity has reached node:", node)
-end)
-
-entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Entity has entered room: ".. room.Name.. " for the first time")
-    else
-        print("Entity has entered room: ".. room.Name.. " again")
-Speed = 0
+    distort.Level = 0.9
+    distort.Parent = cue2
+ cue2.RollOffMaxDistance = 90
+ cue2.RollOffMinDistance = 5
+ cue2.RollOffMode = Enum.RollOffMode.LinearSquare
+    local TW = TweenService:Create(cue2, TweenInfo.new(1.5),{Pitch = 0})
+    local TW1 = TweenService:Create(cue2, TweenInfo.new(0.5),{Pitch = 8})
+    local TW2 = TweenService:Create(cue2, TweenInfo.new(1.5),{Volume = 0})
+    local TW3 = TweenService:Create(cue2, TweenInfo.new(1.5),{Volume = 1})
+    cue2:Play()
+    TW3:Play()
+    wait(9.5)
+    TW1:Play()
+    wait(0.5)
+ workspace.Claim.RushNew.Anchored = false
+ workspace.Claim.RushNew.CanCollide = false
+    TW:Play()
+    TW2:Play()
     wait(2)
-    Speed = 170
-    end
-end)
-
-entity:SetCallback("OnLookAt", function(lineOfSight)
- if lineOfSight == true then
-  print("Player is looking at entity")
- else
-  print("Player view is obstructed by something")
- end
-end)
-
-entity:SetCallback("OnRebounding", function(startOfRebound)
-    if startOfRebound == true then
-        print("Entity has started rebounding")
- else
-        print("Entity has finished rebounding")
- end
-end)
-
-entity:SetCallback("OnDespawning", function()
-    print("Entity is despawning")
-end)
-
-entity:SetCallback("OnDespawned", function()
-    print("Entity has despawned")
-end)
-
-entity:SetCallback("OnDamagePlayer", function(newHealth)
- if newHealth == 0 then
-  print("Entity has killed the player")
- else
-  print("Entity has damaged the player")
- end
-end)
-
---[[
-
-DEVELOPER NOTE:
-By overwriting 'CrucifixionOverwrite' the defaultu crucifixion callback will be replaced with your custom callback.
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
-end)
-
-]]--
-
----====== Run entity ======---
-
-entity:Run()
--- entity:Pause()
--- entity:Resume()
--- entity:IsPaused()
--- entity:Despawn()
-
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(1)
-
-function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
-	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
-	end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
+    workspace.Claim:Destroy()
+    death:Destroy()
+    cue:Destroy()
 end
 
-local scare = Instance.new("Sound")
-scare.Parent = game.Workspace
-scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://5567523008"
-scare.PlaybackSpeed = 3
-scare.Volume = 1
-
-local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
-shift.Parent = scare
-
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = scare
-distort.Level = 1
-
-local TweenService = game:GetService("TweenService")
-local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
-
----====== Load spawner ======---
-
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
-
----====== Create entity ======---
-
-local entity = spawner.Create({
- Entity = {
-  Name = "Rebound",
-  Asset = "rbxassetid://12254145022",
-  HeightOffset = 0
- },
- Lights = {
-  Flicker = {
-   Enabled = false,
-   Duration = 1
-  },
-  Shatter = false,
-  Repair = false
- },
- CameraShake = {
-  Enabled = false,
-  Range = 100,
-  Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
- },
- Movement = {
-  Speed = 100,
-  Delay = 2,
-  Reversed = true
- },
- Rebounding = {
-  Enabled = false,
-  Type = "Ambush", -- "Blitz"
-  Min = 1,
-  Max = 1,
-  Delay = 2
- },
- Damage = {
-  Enabled = true,
-  Range = 40,
-  Amount = 125
- },
- Crucifixion = {
-  Enabled = true,
-  Range = 40,
-  Resist = true,
-  Break = true
- },
- Death = {
-  Type = "Guiding", -- "Curious"
-  Hints = {"You died to Rebound...", "It appears at the next door and has a chance to stay there or run back to the latest door.", "He will come back many times after his initial spawn", "so hide every next door until it is safe.."},
-  Cause = ""
- }
-})
-
----====== Debug entity ======---
-
-entity:SetCallback("OnSpawned", function()
-    print("Entity has spawned")
-workspace.Rebound.Rebound_Cue:Destroy()
-workspace.Rebound.Rebound_Cue2:Destroy()
-workspace.Rebound.Torso.Idle:Destroy()
-workspace.Rebound.Torso.Footsteps:Destroy()
-local bruh = workspace.Rebound.Torso
-local TweenService = game:GetService("TweenService")
-local spawn = Instance.new("Sound")
-spawn.Parent = bruh
-spawn.Name = "ReboundSpawn"
-spawn.SoundId = "rbxassetid://9114221327"
-spawn.Volume = 5
-spawn.RollOffMaxDistance = 10000
-spawn.RollOffMinDistance = 450
-spawn:Play()
-    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
-    move.Parent = bruh
-    move.Name = "ReboundMoving"
-    move.Volume = 0
-    move.Looped = true
-local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
-    local distort = Instance.new("DistortionSoundEffect")
-    distort.Level = 0.75
-    distort.Parent = move
- move.RollOffMaxDistance = 200
- move.RollOffMinDistance = 100
-    local tree = Instance.new("TremoloSoundEffect")
-    tree.Depth = 1
-    tree.Duty = 1
-    tree.Frequency = 5
-    tree.Parent = move
-    local eq = Instance.new("EqualizerSoundEffect")
-    eq.HighGain = -60
-    eq.MidGain = 10
-    eq.LowGain = 10
-    eq.Parent = move
- wait(1)
-    vroom:Play()
- move:Play()
-end)
-
-entity:SetCallback("OnStartMoving", function()
-    print("Entity has started moving")
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-wait(1)
-
-function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
-	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
-	end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
+entity.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:")
 end
 
-local scare = Instance.new("Sound")
-scare.Parent = game.Workspace
-scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://5567523008"
-scare.PlaybackSpeed = 3
-scare.Volume = 1
+entity.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:")
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+  loadstring(game:HttpGet("https://pastefy.app/VN7HIliI/raw"))() 
+end
 
-local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
-shift.Parent = scare
+entity.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:")
+end
 
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = scare
-distort.Level = 1
+entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+    print("Entity:", "has entered room:",room)
+end
 
-local TweenService = game:GetService("TweenService")
-local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
+entity.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:")
+end
 
-loadstring(game:HttpGet('https://pastefy.app/WIaqhAkG/raw'))()
-end)
+entity.Debug.OnDeath = function()
+    warn("Player has died.")
+local func, setupval, getinfo, typeof, getgc, next = nil, debug.setupvalue or setupvalue, debug.getinfo or getinfo, typeof, getgc, next
 
-entity:SetCallback("OnReachNode", function(node)
- print("Entity has reached node:", node)
-end)
-
-entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Entity has entered room: ".. room.Name.. " for the first time")
-    else
-        print("Entity has entered room: ".. room.Name.. " again")
-Speed = 0
-    wait(2)
-    Speed = 170
+for i,v in next, getgc(false) do
+    if typeof(v) == "function" then
+        local info = getinfo(v)
+        if info.currentline == 54 and info.nups == 2 and info.is_vararg == 0 then
+            func = v
+            break
+        end
     end
-end)
+end
 
-entity:SetCallback("OnLookAt", function(lineOfSight)
- if lineOfSight == true then
-  print("Player is looking at entity")
- else
-  print("Player view is obstructed by something")
- end
-end)
-
-entity:SetCallback("OnRebounding", function(startOfRebound)
-    if startOfRebound == true then
-        print("Entity has started rebounding")
- else
-        print("Entity has finished rebounding")
- end
-end)
-
-entity:SetCallback("OnDespawning", function()
-    print("Entity is despawning")
-end)
-
-entity:SetCallback("OnDespawned", function()
-    print("Entity has despawned")
-end)
-
-entity:SetCallback("OnDamagePlayer", function(newHealth)
- if newHealth == 0 then
-  print("Entity has killed the player")
- else
-  print("Entity has damaged the player")
- end
-end)
-
---[[
-
-DEVELOPER NOTE:
-By overwriting 'CrucifixionOverwrite' the defaultu crucifixion callback will be replaced with your custom callback.
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
-end)
-
-]]--
-
----====== Run entity ======---
-
-entity:Run()
--- entity:Pause()
--- entity:Resume()
--- entity:IsPaused()
--- entity:Despawn()
-end)
-
-entity:SetCallback("OnReachNode", function(node)
- print("Entity has reached node:", node)
-end)
-
-entity:SetCallback("OnEnterRoom", function(room, firstTime)
-    if firstTime == true then
-        print("Entity has entered room: ".. room.Name.. " for the first time")
-    else
-        print("Entity has entered room: ".. room.Name.. " again")
-Speed = 0
-    wait(2)
-    Speed = 170
+local function DeathHint(hints, type: string)
+    setupval(func, 1, hints)
+    if type ~= nil then
+        setupval(func, 2, type)
     end
-end)
+end
 
-entity:SetCallback("OnLookAt", function(lineOfSight)
- if lineOfSight == true then
-  print("Player is looking at entity")
- else
-  print("Player view is obstructed by something")
- end
-end)
+DeathHint({
+    "You Died To Who You Call Rebound..",
+    "It Appears At The Next Door And Has a Chance To Stay There Or Run Back To The Latest Door.",
+    "He Will Come Back Many Times After His Initial Spawn",
+    "So Hide Every Next Door Until It Is Safe.."
+}, "Blue") -- "Blue" or "Yellow"
+end
 
-entity:SetCallback("OnRebounding", function(startOfRebound)
-    if startOfRebound == true then
-        print("Entity has started rebounding")
- else
-        print("Entity has finished rebounding")
- end
-end)
+------------------------
 
-entity:SetCallback("OnDespawning", function()
-    print("Entity is despawning")
-end)
-
-entity:SetCallback("OnDespawned", function()
-    print("Entity has despawned")
-end)
-
-entity:SetCallback("OnDamagePlayer", function(newHealth)
- if newHealth == 0 then
-  print("Entity has killed the player")
- else
-  print("Entity has damaged the player")
- end
-end)
-
---[[
-
-DEVELOPER NOTE:
-By overwriting 'CrucifixionOverwrite' the defaultu crucifixion callback will be replaced with your custom callback.
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
-end)
-
-]]--
-
----====== Run entity ======---
-
-entity:Run()
--- entity:Pause()
--- entity:Resume()
--- entity:IsPaused()
--- entity:Despawn()
+-- Run the created entity
+Spawner.runEntity(entity)
