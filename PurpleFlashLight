@@ -1,0 +1,103 @@
+-- Made by Izekai
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local R6 = Instance.new("TextButton")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+R6.Name = "Open"
+R6.Parent = ScreenGui
+R6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+R6.Position = UDim2.new(-0.000343383319, 0, 0.32815966, 0)
+R6.Size = UDim2.new(0, 29, 0, 29)
+R6.Font = Enum.Font.SourceSans
+R6.Text = "open light"
+R6.TextColor3 = Color3.fromRGB(0, 0, 0)
+R6.TextSize = 14.000
+R6.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = true
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = true
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = true
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled = true
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.sound_open:Play()
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = true
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = true
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = true
+workspace.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled = true
+workspace.LocalPlayer.PurpleFlashlight.Handle.sound_open:Play()
+end)
+
+-- Made by Izekai
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local R6 = Instance.new("TextButton")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+R6.Name = "Open"
+R6.Parent = ScreenGui
+R6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+R6.Position = UDim2.new(-0.000343383319, 0, 0.32815988, 100)
+R6.Size = UDim2.new(0, 29, 0, 29)
+R6.Font = Enum.Font.SourceSans
+R6.Text = "close light"
+R6.TextColor3 = Color3.fromRGB(0, 0, 0)
+R6.TextSize = 14.000
+R6.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = false
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = false
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.sound_close:Play()
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = false
+game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled =  false
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = false
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = false
+workspace.LocalPlayer.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = false
+workspace.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled = false
+workspace.LocalPlayer.PurpleFlashlight.Handle.sound_close:Play()
+end)
+
+local shadow=game:GetObjects("rbxassetid://13099716081")[1]
+shadow.Parent = game.Players.LocalPlayer.Backpack
+local Players = game:GetService("Players")
+local Plr = Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local Hum = Char:WaitForChild("Humanoid")
+local RightArm = Char:WaitForChild("RightUpperArm")
+local LeftArm = Char:WaitForChild("LeftUpperArm")
+local RightC1 = RightArm.RightShoulder.C2
+local LeftC1 = LeftArm.LeftShoulder.C2
+        local function setupCrucifix(tool)
+        RightArm.Name = "R_Arm"
+        LeftArm.Name = "L_Arm"
+        
+        RightArm.RightShoulder.C1 = RightC1 * CFrame.Angles(math.rad(-90), math.rad(-0), 0)
+        LeftArm.LeftShoulder.C1 = LeftC1 * CFrame.new(0, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+        for _, v in next, Hum:GetPlayingAnimationTracks() do
+            v:Stop()
+        end
+        end
+shadow.Equipped:Connect(function()
+setupCrucifix(shadow)
+game.Players.LocalPlayer:SetAttribute("Hidden", true)
+end)
+ 
+shadow.Unequipped:Connect(function()
+    game.Players.LocalPlayer:SetAttribute("Hidden", false)
+        RightArm.Name = "RightUpperArm"
+        LeftArm.Name = "LeftUpperArm"
+        
+        RightArm.RightShoulder.C1 = RightC1
+        LeftArm.LeftShoulder.C1 = LeftC1
+end)
