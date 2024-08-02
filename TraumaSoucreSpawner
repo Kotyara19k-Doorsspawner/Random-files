@@ -82,6 +82,7 @@ end
        
 entity.Debug.OnEntitySpawned = function()
     print("Entity has spawned:")
+workspace.Trauma.Repent.PlayOnRemove = false
 workspace.Trauma.RushNew.PlaySound:Destroy()
 workspace.Trauma.RushNew.Attachment.BlackTrail:Destroy()
 workspace.Trauma.Ambience:Destroy()
