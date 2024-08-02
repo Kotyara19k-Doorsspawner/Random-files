@@ -1,0 +1,21 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "MyImageGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Name = "MyImageLabel"
+imageLabel.Size = UDim2.new(1, 0, 1, 0)
+imageLabel.Position = UDim2.new(0, 0, 0, 0)
+imageLabel.BackgroundTransparency = 1
+imageLabel.Image = "rbxassetid://18771741504"
+
+imageLabel.Parent = screenGui
+
+
+game.Players.LocalPlayer.PlayerGui.MainUI.Settings.CloseButton.KeyXbox.Visible = true
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.PromptFrameYellow.KeyXbox.Visible = true
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.PromptFrameRift.KeyXbox.Visible = true
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.PromptFrame.KeyXbox.Visible = true
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.PromptFrame.KeyXbox.Image = "rbxassetid://9876149963"
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.MobileButtons.CrouchButton.Image = "rbxassetid://9876149963"
+game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.MobileButtons.InteractButton.Image = "rbxassetid://9876149963"
