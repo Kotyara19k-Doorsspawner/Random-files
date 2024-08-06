@@ -1,69 +1,98 @@
--- Made by Izekai
+local screenGui = Instance.new("ScreenGui")
+local imageButton = Instance.new("ImageButton")
 
--- Instances:
+screenGui.Name = "MyScreenGui2"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-local ScreenGui = Instance.new("ScreenGui")
-local R6 = Instance.new("TextButton")
-local TextButton = Instance.new("TextButton")
+imageButton.Name = "PurFlashLightButtonClose"
+imageButton.Size = UDim2.new(0, 100, 0, 100)
+imageButton.Position = UDim2.new(0, 800, 0, 0)
+imageButton.Image = "rbxassetid://18837834074"
+imageButton.BackgroundTransparency = 1
+imageButton.Parent = screenGui
 
---Properties:
+local normalImage = "rbxassetid://18837834074" 
+local clickedImage = "rbxassetid://18837834074" 
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local function onButtonClicked()
+    imageButton.Image = clickedImage
 
-R6.Name = "Open"
-R6.Parent = ScreenGui
-R6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-R6.Position = UDim2.new(-0.000343383319, 0, 0.32815966, 0)
-R6.Size = UDim2.new(0, 29, 0, 29)
-R6.Font = Enum.Font.SourceSans
-R6.Text = "Light"
-R6.TextColor3 = Color3.fromRGB(0, 0, 0)
-R6.TextSize = 14.000
-R6.MouseButton1Down:connect(function()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    
+    local animationInstance = Instance.new("Animation")
+    animationInstance.AnimationId = "rbxassetid://10371079646"
+    local animationTrack = character:WaitForChild("Humanoid"):LoadAnimation(animationInstance)
+    animationTrack:Play()
 
-local animationInstance = Instance.new("Animation")
-                animationInstance.AnimationId = "rbxassetid://10371010815"
-                local animationTrack = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(animationInstance)
-                animationTrack:Play() game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = true
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = true
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = true
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled = true
-end)
+    local flashlight = character:WaitForChild("PurpleFlashlight")
+    local handle = flashlight:WaitForChild("Handle")
+    local neon = handle:WaitForChild("Neon")
 
--- Made by Izekai
+    local attachment = neon:WaitForChild("Attachment")
+    local particleEmitter = attachment:WaitForChild("ParticleEmitter")
+    local surfaceLight = attachment:WaitForChild("SurfaceLight")
+    local lightAttach = neon:WaitForChild("LightAttach")
+    local lightAttachSurfaceLight = lightAttach:WaitForChild("SurfaceLight")
 
--- Instances:
+    attachment.Shiny.Enabled = false
+    particleEmitter.Enabled = false
+    surfaceLight.Enabled = false
+    lightAttachSurfaceLight.Enabled = false
 
-local ScreenGui = Instance.new("ScreenGui")
-local R6 = Instance.new("TextButton")
-local TextButton = Instance.new("TextButton")
+    local soundClose = handle:WaitForChild("sound_close")
+    soundClose:Play()
+end
 
---Properties:
+imageButton.MouseButton1Click:Connect(onButtonClicked)
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local screenGui = Instance.new("ScreenGui")
+local imageButton = Instance.new("ImageButton")
 
-R6.Name = "NoOpen"
-R6.Parent = ScreenGui
-R6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-R6.Position = UDim2.new(-0.000343383319, 0, 0.32815988, 100)
-R6.Size = UDim2.new(0, 29, 0, 29)
-R6.Font = Enum.Font.SourceSans
-R6.Text = "NoLight"
-R6.TextColor3 = Color3.fromRGB(0, 0, 0)
-R6.TextSize = 14.000
-R6.MouseButton1Down:connect(function()
+screenGui.Name = "MyScreenGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-local animationInstance = Instance.new("Animation")
-                animationInstance.AnimationId = "rbxassetid://10371079646"
-                local animationTrack = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(animationInstance)
-                animationTrack:Play() game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.Shiny.Enabled = false
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.ParticleEmitter.Enabled = false
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.sound_close:Play()
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.Attachment.SurfaceLight.Enabled = false
-game.Players.LocalPlayer.Backpack.PurpleFlashlight.Handle.Neon.LightAttach.SurfaceLight.Enabled =  false
-end)
+imageButton.Name = "PurFlashLightButtonOpen"
+imageButton.Size = UDim2.new(0, 100, 0, 100)
+imageButton.Position = UDim2.new(0, 800, 0, 190)
+imageButton.Image = "rbxassetid://18737104203"
+imageButton.BackgroundTransparency = 1
+imageButton.Parent = screenGui
+
+local normalImage = "rbxassetid://18737104203" 
+local clickedImage = "rbxassetid://18737104203" 
+
+local function onButtonClicked()
+    imageButton.Image = clickedImage
+
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    
+    local animationInstance = Instance.new("Animation")
+    animationInstance.AnimationId = "rbxassetid://10371010815"
+    local animationTrack = character:WaitForChild("Humanoid"):LoadAnimation(animationInstance)
+    animationTrack:Play()
+
+    local flashlight = character:WaitForChild("PurpleFlashlight")
+    local handle = flashlight:WaitForChild("Handle")
+    local neon = handle:WaitForChild("Neon")
+
+    local attachment = neon:WaitForChild("Attachment")
+    local particleEmitter = attachment:WaitForChild("ParticleEmitter")
+    local surfaceLight = attachment:WaitForChild("SurfaceLight")
+    local lightAttach = neon:WaitForChild("LightAttach")
+    local lightAttachSurfaceLight = lightAttach:WaitForChild("SurfaceLight")
+
+    attachment.Shiny.Enabled = true
+    particleEmitter.Enabled = true
+    surfaceLight.Enabled = true
+    lightAttachSurfaceLight.Enabled = true
+
+    local soundOpen = handle:WaitForChild("sound_open")
+    soundOpen:Play()
+end
+
+imageButton.MouseButton1Click:Connect(onButtonClicked)
 
 local shadow=game:GetObjects("rbxassetid://13099716081")[1]
 shadow.Parent = game.Players.LocalPlayer.Backpack
