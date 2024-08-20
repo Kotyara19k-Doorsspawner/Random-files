@@ -18,8 +18,8 @@ coroutine.wrap(function()
     while true do
         wait(80)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
-loadstring(game:HttpGet('https://pastefy.app/JztYAL4m/raw'))()
+        wait(0)
+loadstring(game:HttpGet('https://pastefy.app/BItVDA0u/raw'))()
     end
 end)()
 
@@ -28,7 +28,7 @@ coroutine.wrap(function()
     while true do
         wait(320)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
+        wait(0)
 loadstring(game:HttpGet('https://pastefy.app/YMa2CPBC/raw'))()
     end
 end)()
@@ -38,7 +38,7 @@ coroutine.wrap(function()
     while true do
         wait(180)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
+        wait(0)
 loadstring(game:HttpGet(''))()
     end
 end)()
@@ -48,7 +48,7 @@ coroutine.wrap(function()
     while true do
         wait(300)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
+        wait(0)
 loadstring(game:HttpGet(''))()
     end
 end)()
@@ -56,10 +56,10 @@ end)()
 -- Trauma
 coroutine.wrap(function()
     while true do
-        wait(math.random(50,420))
+        wait(100)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
-loadstring(game:HttpGet(''))()
+        wait(0)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kotyara19k-Doorsspawner/Random-files/main/TraumaSoucreSpawner'))()
     end
 end)()
 
@@ -68,7 +68,7 @@ coroutine.wrap(function()
     while true do
         wait(200)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
+        wait(/)
 loadstring(game:HttpGet(''))()
     end
 end)()
@@ -78,7 +78,7 @@ coroutine.wrap(function()
     while true do
         wait(200)
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-        wait(2)
+        wait(0)
 loadstring(game:HttpGet('https://pastefy.app/1xxpTxo3/raw'))()
     end
 end)()
