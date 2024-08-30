@@ -1,3 +1,126 @@
+-- Yay Rebound Update
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--Wait do u want steal script..?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Skid 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Dont Steal scripts if u don't want be bad :(
+
+
 local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
     Reboundcolor.Name = "Warn"
     Reboundcolor.TintColor = Color3.fromRGB(65, 138, 255) Reboundcolor.Saturation = -0.7 Reboundcolor.Contrast = 0.2
@@ -72,7 +195,7 @@ local entity = Spawner.createEntity({
     NoDieOnCrouching = false,
     NoHiding = false,
     AntiCrucifix = false,
-    KillRange = 10000,
+    KillRange = 10,
     OneRoom = false,
     DieOnLook = false,
     BreakLights = false,
@@ -142,7 +265,7 @@ end
        
 entity.Debug.OnEntitySpawned = function()
     print("Entity has spawned:")
-wait(3.45)
+wait(1)
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -169,7 +292,7 @@ end
 entity.Debug.OnEntityStartMoving = function()
     print("Entity has started moving:")
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
- loadstring(game:HttpGet("https://pastefy.app/faTeO4V7/raw"))() 
+ loadstring(game:HttpGet(""))() 
 end
 
 entity.Debug.OnEntityFinishedRebound = function()
@@ -192,7 +315,7 @@ end
 entity.Debug.OnDeath = function()
     warn("Player has died.")
 wait(-290)
-loadstring(game:HttpGet('https://pastefy.app/RtjDtwEJ/raw'))()
+loadstring(game:HttpGet('https://pastefy.app/7P4tW9Ik/raw'))()
 local func, setupval, getinfo, typeof, getgc, next = nil, debug.setupvalue or setupvalue, debug.getinfo or getinfo, typeof, getgc, next
 
 for i,v in next, getgc(false) do
