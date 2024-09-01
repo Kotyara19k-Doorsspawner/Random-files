@@ -123,6 +123,20 @@
 
 
 
+
+local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24) 
+    Reboundcolor.Name = "Warn" 
+    Reboundcolor.TintColor = Color3.fromRGB(65, 138, 255) Reboundcolor.Saturation = -0.7 Reboundcolor.Contrast = 0.2 
+    game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
+
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+ camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -140,22 +154,22 @@ function CustomGitSound(soundlink, vol, filename)
 end
 
 CustomGitSound("https://github.com/Isth4t/ReboundMain/raw/main/ReboundWarning.mp3", 1, "ReboundWarning")
-
+wait(2)
 local Spawner = loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/OtherSuff/DoorEntitySpawn%2BSource'))()
 
 
--- Create entity
-local entity = Spawner.createEntity({
-    CustomName = "Rebound", -- Custom name of your entity
-    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
-    Speed = 100, -- Percentage, 100 = default Rush speed
-    DelayTime = 5.35, -- Time before starting cycles (seconds)
+-- ReboundMain
+local Rebound = Spawner.createEntity({
+    CustomName = "Rebound", 
+    Model = "rbxassetid://12254145022", 
+    Speed = 160, 
+    DelayTime = 7, 
     HeightOffset = 0,
     CanKill = true,
     NoDieOnCrouching = false,
     NoHiding = false,
     AntiCrucifix = false,
-    KillRange = 10,
+    KillRange = 40,
     OneRoom = false,
     DieOnLook = false,
     BreakLights = false,
@@ -171,7 +185,7 @@ local entity = Spawner.createEntity({
     Cycles = {
         Min = 1,
         Max = 1,
-        WaitTime = 2,
+        WaitTime = 3,
     },
     CamShake = {
         false, -- Enabled/Disabled
@@ -195,19 +209,19 @@ local entity = Spawner.createEntity({
             },
             Flashing = {
                 true, -- Enabled/Disabled
-                Color3.fromRGB(100, 200, 100), -- Color
+                Color3.fromRGB(100, 100, 255), -- Color
             },
             Tease = {
-                true, -- Enabled/Disabled
-                Min = 1,
-                Max = 3,
+                false, 
+                Min = 0,
+                Max = 0,
             },
         },
     },
     Color = 'GuidingLight', -- CuriousLight ( Yellow ) | GuidingLight ( Blue )
-    DiffrentMessages = false,
+    DiffrentMessages = true,
     CustomDialog = {  
-        {"Claim has seen you.", "It will consume anyone on sight.", "It takes a bit to fully spawn in", "so you can use that to your advantage."}, -- Death Messages
+        {"Death message here."}, 
         {"Stop Dieing"},
         {"Bruh", "Use what you have learned from Rush!"},
         {"It seems like Template is causing quite the ruckus...", "Hide in a closet or bed as quickly as possible!"},
@@ -217,15 +231,15 @@ local entity = Spawner.createEntity({
 
 -----[[ Advanced Sctipting ]]-----
 
-entity.Debug.OnEntityMoving = function(Invincible,Hiding,plrCollisionPoint)
+Rebound.Debug.OnEntityMoving = function(Invincible,Hiding,plrCollisionPoint)
 print("Invincible: "..tostring(Invincible))
 print("Player to Entity Collision (None hiding Point): "..tostring(plrCollisionPoint))
 print("Hiding: "..tostring(Hiding))
 end
        
-entity.Debug.OnEntitySpawned = function()
+Rebound.Debug.OnEntitySpawned = function()
     print("Entity has spawned:")
-wait(5)
+wait(4)
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -245,59 +259,38 @@ end
 CustomGitSound("https://github.com/Kotyara19k-Doorsspawner/Random-files/raw/main/Y2meta.app%20-%20DOORS%20HARDCORE_REBOUND%20MOVING%20START%20(320%20kbps).mp3", 1, "ReboundMoving")
 end
 
-entity.Debug.OnEntityDespawned = function()
-    print("Entity has despawned:")
+Rebound.Debug.OnEntityDespawned = function()
+    
 end
 
-entity.Debug.OnEntityStartMoving = function()
-    print("Entity has started moving:")
+Rebound.Debug.OnEntityStartMoving = function()
+    print("Rebound has started moving:")
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
- loadstring(game:HttpGet("https://pastefy.app/7P4tW9Ik/raw"))() 
+ loadstring(game:HttpGet("https://pastefy.app/Ou6ZqFoX/raw"))() 
 end
 
-entity.Debug.OnEntityFinishedRebound = function()
-    print("Entity has finished rebound:")
+Rebound.Debug.OnEntityFinishedRebound = function()
+    print("ReboundGone")
 end
 
-entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
-    print("Entity:", "has entered room:",room)
+Rebound.Debug.OnEntityEnteredRoom = function(entityTable, room)
+  
+Speed = 0
+wait(1)
+Speed = 180
 end
 
-entity.Debug.OnLookAtEntity = function()
+Rebound.Debug.OnLookAtEntity = function()
     print("Player has looked at entity:")
 end
 
-entity.Debug.OnDeath = function()
+Rebound.Debug.OnDeath = function()
     warn("Player has died.")
 loadstring(game:HttpGet('https://pastefy.app/RtjDtwEJ/raw'))()
 
-local func, setupval, getinfo, typeof, getgc, next = nil, debug.setupvalue or setupvalue, debug.getinfo or getinfo, typeof, getgc, next
-
-for i,v in next, getgc(false) do
-    if typeof(v) == "function" then
-        local info = getinfo(v)
-        if info.currentline == 54 and info.nups == 2 and info.is_vararg == 0 then
-            func = v
-            break
-        end
-    end
+firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call Rebound...", "He makes his presence known and keeps coming back...", "Hide when this happens!"}, "Blue")
 end
 
-local function DeathHint(hints, type: string)
-    setupval(func, 1, hints)
-    if type ~= nil then
-        setupval(func, 2, type)
-    end
-end
+-----------------------
 
-DeathHint({
-    "You died to who you call Rebound...",
-    "He makes his presence known and keeps coming back...",
-    "Hide when this happens!"
-}, "Blue") -- "Blue" or "Yellow"
-end
-
-------------------------
-
--- Run the created entity
-Spawner.runEntity(entity)
+Spawner.runEntity(Rebound)
